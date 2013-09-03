@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+        targetNamespace="http://www.bpmnwithactiviti.org"
+        xmlns:activiti="http://activiti.org/bpmn">
+		
+	<process id="simpleSpringProcess" name="Hello Process">
+		<startEvent id="startevent1" name="Start"/>
+		<sequenceFlow id="sequenceflow1" sourceRef="startevent1" targetRef="serviceTask1"/>
+		<serviceTask id="serviceTask1" name="Hello Service" activiti:expression="#{helloService.sayHello(execution)}"/>
+		<sequenceFlow id="sequenceflow2" name="Send to police" sourceRef="serviceTask1" targetRef="usertask1"/>
+		<userTask id="usertask1" name="Police confirm">
+            <documentation>confirmed by police</documentation>
+            <potentialOwner>
+                <resourceAssignmentExpression>
+                    <formalExpression>police</formalExpression>
+                </resourceAssignmentExpression>
+            </potentialOwner>
+        </userTask>
+        <sequenceFlow id="sequenceflow3" name="flow" sourceRef="usertask1" targetRef="endevent1"/>
+		<endEvent id="endevent1" name="End"/>
+	</process>
+	
+</definitions>

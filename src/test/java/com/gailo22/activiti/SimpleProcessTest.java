@@ -12,7 +12,7 @@ import static org.junit.Assert.assertNotNull;
 public class SimpleProcessTest {
 
 	@Test
-	public void startSampleProcess() {
+	public void testHelloProcess() {
 		final ProcessEngine processEngine = ProcessEngineConfiguration
 				.createStandaloneInMemProcessEngineConfiguration()
 				.buildProcessEngine(); 
@@ -24,7 +24,7 @@ public class SimpleProcessTest {
 		.deploy();
 
 		final ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(
-"simpleprocess");
+				"simpleprocess");
 		assertNotNull(processInstance.getId());
 		System.out.println("id " + processInstance.getId() + " " 
 				+ processInstance.getProcessDefinitionId());
