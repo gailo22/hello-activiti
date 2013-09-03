@@ -12,7 +12,7 @@ import static org.junit.Assert.assertNotNull;
 public class SimpleProcessTest {
 
 	@Test
-	public void startBookOrder() {
+	public void startSampleProcess() {
 		final ProcessEngine processEngine = ProcessEngineConfiguration
 				.createStandaloneInMemProcessEngineConfiguration()
 				.buildProcessEngine(); 
